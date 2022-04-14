@@ -1,0 +1,192 @@
+// n is number of stars required
+@function multiple-box-shadow ($n) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  @for $i from 2 through $n {
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+  }
+
+  @return unquote($value);
+}
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big: multiple-box-shadow(100);
+$transparent-white: rgba(255,255,255, 0.85);
+$transparent-black: rgba(0,0,0, 0.85);
+
+html,body {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  overflow-y: scroll;
+}
+#background{
+  height: 100%;
+  position: absolute;
+  #stars {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+    animation: animStar 50s infinite alternate;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 100vh;
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow: $shadows-small;
+    }
+  }
+  #stars2 {
+    overflow: hidden;
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+    animation: animStar 100s infinite alternate;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 100vh;
+      width: 2px;
+      height: 2px;
+      background: transparent;
+      box-shadow: $shadows-medium;
+    }
+  }
+  #stars3 {
+    overflow: hidden;
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+    animation: animStar 150s linear alternate;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 100vh;
+      width: 3px;
+      height: 3px;
+      background: transparent;
+      box-shadow: $shadows-big;
+    }
+  }
+}
+nav{
+  transition: all .3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 5rem;
+  @media (max-width: 400px) {
+    font-size: 0.75em;
+    font-weight: 400;
+    padding-left: 1rem;
+  }
+  ul{
+    display: flex;
+    margin: 0;
+    padding: 1rem;
+    list-style: none;
+    gap: 2rem;
+    @media (max-width: 400px) {
+      gap: 1rem;
+    }
+    li{
+      a{
+        display: inline-block;
+        color: silver;
+        text-decoration: none;
+      }
+      a:hover{
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+#landingPage{
+  box-sizing: border-box;
+  padding: 1rem;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #titlebox{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 0.5em;
+    .title{
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      color: silver;
+      font-size: 2em;
+      @media (max-width: 400px) {
+        font-size: 1.5em;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+#divider{
+  box-sizing: border-box;
+  box-shadow: inset 0rem 2rem 1rem -2rem black;
+  width: 100%;
+  height: 50vw; 
+  border-top-left-radius: 55vw;  
+  border-top-right-radius: 55vw;
+  border-bottom: 0;
+  background: $transparent-white;
+}
+#divider-flipped{
+  box-sizing: border-box;
+  box-shadow: 0rem 2rem 1rem -2rem rgb(69, 69, 69);
+  width: 100%;
+  height: 50vw; 
+  border-bottom-left-radius: 55vw;  
+  border-bottom-right-radius: 55vw;
+  border-top: 0;
+  background: $transparent-white;
+}
+#aboutPage{
+  box-sizing: border-box;
+  padding: 1rem;
+  height: 100vh;
+  background:$transparent-white;
+}
+#contactPage{
+  box-sizing: border-box;
+  padding: 1rem;
+  height: 100vh;
+  background: transparent;
+}
+.hidden{
+  opacity: 0;
+}
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-100vh);
+  }
+};
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
