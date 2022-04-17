@@ -45,7 +45,7 @@
         */
         $("body").scroll(function() {
             let scrollTop = $("#titlebox").offset().top;
-            if ( scrollTop <= ($("#nav").offset().top + 48)) $("#nav").css( "background", "rgba(0,0,0, 0.85)" ).css("box-shadow", "-10px 10px 10px black");
+            if ( scrollTop <= ($("#nav").offset().top + 48)) $("#nav").css( "background", "rgba(0,0,0, 0.95)" ).css("box-shadow", "-5px 5px 2.5px black");
             else $("#nav").css( "background", "transparent" ).css("box-shadow", "none");
 
             let planets = ["#planet1", "#planet2", "#planet3", "#planet4"];
