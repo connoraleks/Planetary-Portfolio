@@ -34,7 +34,7 @@ html,body {
     height: 1px;
     background: transparent;
     box-shadow: $shadows-small;
-    animation: animStar 50s infinite alternate;
+    animation: animStar 50s infinite linear;
 
     &:after {
       content: " ";
@@ -53,7 +53,7 @@ html,body {
     height: 2px;
     background: transparent;
     box-shadow: $shadows-medium;
-    animation: animStar 100s infinite alternate;
+    animation: animStar 100s infinite linear;
 
     &:after {
       content: " ";
@@ -72,7 +72,7 @@ html,body {
     height: 3px;
     background: transparent;
     box-shadow: $shadows-big;
-    animation: animStar 150s linear alternate;
+    animation: animStar 150s infinite linear;
 
     &:after {
       content: " ";
@@ -86,6 +86,7 @@ html,body {
   }
 }
 nav{
+  z-index: 1000;
   transition: all .3s ease-in-out;
   position: fixed;
   top: 0;
@@ -163,11 +164,12 @@ nav{
   border-top: 0;
   background: $transparent-white;
 }
-#aboutPage{
+#planetsPage{
   box-sizing: border-box;
-  padding: 1rem;
-  height: 100vh;
-  background:$transparent-white;
+  padding: 0 5rem;
+  @media (max-width: 400px) {
+    padding: 1rem;
+  }
 }
 #contactPage{
   box-sizing: border-box;
@@ -175,8 +177,27 @@ nav{
   height: 100vh;
   background: transparent;
 }
+.planet{
+  box-sizing: border-box;
+  margin: 2.5rem 0;
+  width: min(50vh, 50vw);
+  height: min(50vh, 50vw);
+  border-radius: 50%;
+  background: $transparent-white;
+  padding: 2rem;
+  transition: all .15s ease-in-out;
+}
+.planet:hover{
+  transform: scale(1.15);
+}
 .hidden{
   opacity: 0;
+}
+.right{
+  margin-left: auto;
+}
+.left{
+  margin-right: auto;
 }
 @keyframes animStar {
   from {
@@ -184,6 +205,22 @@ nav{
   }
   to {
     transform: translateY(-100vh);
+  }
+};
+@keyframes slide-left {
+  from {
+    transform: translateX(-50vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+};
+@keyframes slide-right {
+  from {
+    transform: translateX(50vw);
+  }
+  to {
+    transform: translateX(0);
   }
 };
 @keyframes fadeIn {
