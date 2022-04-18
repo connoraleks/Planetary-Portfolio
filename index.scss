@@ -10,8 +10,8 @@
 $shadows-small: multiple-box-shadow(700);
 $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
-$transparent-white: rgba(255,255,255, 0.85);
-$transparent-black: rgba(0,0,0, 0.85);
+$transparent-white: rgba(255,255,255, 0.95);
+$transparent-black: rgba(0,0,0, 0.95);
 
 html,body {
   scroll-behavior: smooth;
@@ -34,7 +34,7 @@ html,body {
     height: 1px;
     background: transparent;
     box-shadow: $shadows-small;
-    animation: animStar 50s infinite alternate;
+    animation: animStar 50s infinite linear;
 
     &:after {
       content: " ";
@@ -53,7 +53,7 @@ html,body {
     height: 2px;
     background: transparent;
     box-shadow: $shadows-medium;
-    animation: animStar 100s infinite alternate;
+    animation: animStar 100s infinite linear;
 
     &:after {
       content: " ";
@@ -72,7 +72,7 @@ html,body {
     height: 3px;
     background: transparent;
     box-shadow: $shadows-big;
-    animation: animStar 150s linear alternate;
+    animation: animStar 150s infinite linear;
 
     &:after {
       content: " ";
@@ -86,16 +86,18 @@ html,body {
   }
 }
 nav{
+  z-index: 1000;
   transition: all .3s ease-in-out;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding-left: 5rem;
+  padding-left: 1vw;
+  font-size: 1rem;
   @media (max-width: 400px) {
-    font-size: 0.75em;
-    font-weight: 400;
-    padding-left: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding-left: 0.5vw;
   }
   ul{
     display: flex;
@@ -121,7 +123,7 @@ nav{
 #landingPage{
   box-sizing: border-box;
   padding: 1rem;
-  height: 75vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,6 +132,10 @@ nav{
     flex-direction: column;
     justify-content: left;
     gap: 0.5em;
+
+    @media (max-width: 500px) {
+      transform: translateY(-5vh);
+    }
     .title{
       margin: 0;
       padding: 0;
@@ -163,20 +169,42 @@ nav{
   border-top: 0;
   background: $transparent-white;
 }
-#aboutPage{
+#planetsPage{
   box-sizing: border-box;
-  padding: 1rem;
-  height: 100vh;
-  background:$transparent-white;
+  padding: 0 5rem;
+  @media (max-width: 400px) {
+    padding: 1rem;
+  }
+  padding-top: 5vh; //Needed because the navbar links dont account for navbar blocking content
 }
 #contactPage{
   box-sizing: border-box;
   padding: 1rem;
   height: 100vh;
   background: transparent;
+  padding-top: 5vh; //Needed because the navbar links dont account for navbar blocking content
+}
+.planet{
+  box-sizing: border-box;
+  margin: 5rem 0;
+  width: min(65vh, 65vw);
+  height: min(65vh, 65vw);
+  border-radius: 50%;
+  background: $transparent-white;
+  padding: 10%;
+  transition: all .15s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .hidden{
   opacity: 0;
+}
+.right{
+  margin-left: auto;
+}
+.left{
+  margin-right: auto;
 }
 @keyframes animStar {
   from {
@@ -184,6 +212,22 @@ nav{
   }
   to {
     transform: translateY(-100vh);
+  }
+};
+@keyframes slide-left {
+  from {
+    transform: translateX(-100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+};
+@keyframes slide-right {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
   }
 };
 @keyframes fadeIn {

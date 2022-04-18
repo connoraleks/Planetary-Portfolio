@@ -6,6 +6,7 @@
     <link href='./index.css' rel='stylesheet' type='text/css'>
     <title>Starry Portfolio</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div id="background">
@@ -13,11 +14,11 @@
         <div id="stars2"></div>
         <div id="stars3"></div>
     </div>
-    <nav class="hidden" id="nav">
+    <nav id="nav">
         <ul>
-            <li><a href="#landingPage">Home</a></li>
-            <li><a href="#aboutPage">About</a></li>
-            <li><a href="#contactPage">Contact</a></li>
+            <li class="hidden" id="homelink"><a href="#landingPage">Home</a></li>
+            <li class="hidden" id="planetslink"><a href="#planetsPage">Planets</a></li>
+            <li class="hidden" id="contactlink"><a href="#contactPage">Contact</a></li>
         </ul>
     </nav>
     <div id="landingPage">
@@ -27,38 +28,12 @@
             <h1 class="title" id="title3"><span class="hidden" id="title3a">That you couldn't help but... </span> <span class="hidden" id="title3b" style="color: white;">scroll.</span></h1>
         </div> 
     </div>
-    <div id="divider"></div>
-    <div id="aboutPage"></div>
-    <div id="divider-flipped"></div>
+    <div id="planetsPage">
+        <div id="planet1" class="planet left hidden"></div>
+        <div id="planet2" class="planet right hidden"></div>
+        <div id="planet3" class="planet left hidden"></div>
+    </div>
     <div id="contactPage"></div>
-    <script>
-        console.log("Script");
-        $("body").scroll(function() {
-            var scrollTop = $("#titlebox").offset().top;
-            console.log(scrollTop <= ($("#nav").offset().top + 48));
-            if ( scrollTop <= ($("#nav").offset().top + 48)) $("#nav").css( "background", "rgba(0,0,0, 0.85)" ).css("box-shadow", "-10px 10px 10px black");
-            else $("#nav").css( "background", "transparent" ).css("box-shadow", "none");
-        });
-        (function($){
-            let title1a = $("#title1a");
-            let title1b = $("#title1b");
-            let title2 = $("#title2");
-            let title3a = $("#title3a");
-            let title3b = $("#title3b");
-            let nav = $("#nav");
-            title1a.css('animation', 'fadeIn 1s');
-            title1b.css('animation', 'fadeIn 1s 2s');
-            title2.css('animation', 'fadeIn 1s 4s');
-            title3a.css('animation', 'fadeIn 1s 6s')
-            title3b.css('animation', 'fadeIn 1s 8s')
-            nav.css('animation', 'fadeIn 1s 10s')
-            window.setTimeout(() => title1a.toggleClass("hidden"), 1000)
-            window.setTimeout(() => title1b.toggleClass("hidden"), 3000)
-            window.setTimeout(() => title2.toggleClass("hidden"), 5000)
-            window.setTimeout(() => title3a.toggleClass("hidden"), 7000)
-            window.setTimeout(() => title3b.toggleClass("hidden"), 9000)
-            window.setTimeout(() => nav.toggleClass("hidden"), 11000)
-        })(jQuery)
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
