@@ -32,7 +32,6 @@
         <div id="planet1" class="planet left hidden"></div>
         <div id="planet2" class="planet right hidden"></div>
         <div id="planet3" class="planet left hidden"></div>
-        <div id="planet4" class="planet right hidden"></div>
     </div>
     <div id="contactPage"></div>
     <script>
@@ -43,19 +42,19 @@
 
         Also listens for when to reveal the planets
         */
+        const planets = ["#planet1", "#planet2", "#planet3"];
         $("body").scroll(function() {
             let scrollTop = $("#titlebox").offset().top;
             if ( scrollTop <= ($("#nav").offset().top + 48)) $("#nav").css( "background", "rgba(0,0,0, 0.95)" ).css("box-shadow", "-5px 5px 2.5px black");
             else $("#nav").css( "background", "transparent" ).css("box-shadow", "none");
 
-            let planets = ["#planet1", "#planet2", "#planet3", "#planet4"];
             for(let i = 0; i < planets.length; i++){
-                if (($(planets[i]).offset().top * 2) <= (window.scrollY + window.innerHeight) && $(planets[i]).hasClass('hidden')){
+                if (($(planets[i]).offset().top * 1.5) <= (window.scrollY + (window.innerHeight*0.55)) && $(planets[i]).hasClass('hidden')){
                     $(planets[i]).removeClass('hidden');
                     //Left side
-                    if(i % 2 == 0) $(planets[i]).css('animation', 'slide-left 1s');
+                    if(i % 2 == 0) $(planets[i]).css('animation', 'slide-left 2s');
                     //Right side
-                    else $(planets[i]).css('animation', 'slide-right 1s');
+                    else $(planets[i]).css('animation', 'slide-right 2s');
                 }
             }
 
@@ -96,11 +95,9 @@
         const getRepos = async () => {
             try {
                 const response = await axios.get(`${BASE_URL}`);
-                const data = response.data;
-                console.log(data);
-                data.forEach(element => {
-                    console.log(element.pushed_at)
-                });
+                const data = response.data.filter((repo) => repo.fork !== true);
+                data.sort((a,b) => (new Date(b.pushed_at) - new Date(a.pushed_at)));
+                for(let i = 0; i < 2 || i < data.length; i++) $(planets[i]).append(`<h1>${data[i].name}</h1>`)
             } catch (errors) {
                 console.error(errors);
             }

@@ -123,7 +123,7 @@ nav{
 #landingPage{
   box-sizing: border-box;
   padding: 1rem;
-  height: 75vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,6 +132,10 @@ nav{
     flex-direction: column;
     justify-content: left;
     gap: 0.5em;
+
+    @media (max-width: 500px) {
+      transform: translateY(-5vh);
+    }
     .title{
       margin: 0;
       padding: 0;
@@ -171,25 +175,27 @@ nav{
   @media (max-width: 400px) {
     padding: 1rem;
   }
+  padding-top: 5vh; //Needed because the navbar links dont account for navbar blocking content
 }
 #contactPage{
   box-sizing: border-box;
   padding: 1rem;
   height: 100vh;
   background: transparent;
+  padding-top: 5vh; //Needed because the navbar links dont account for navbar blocking content
 }
 .planet{
   box-sizing: border-box;
-  margin: 2.5rem 0;
+  margin: 5rem 0;
   width: min(65vh, 65vw);
   height: min(65vh, 65vw);
   border-radius: 50%;
   background: $transparent-white;
-  padding: 2rem;
+  padding: 10%;
   transition: all .15s ease-in-out;
-}
-.planet:hover{
-  transform: scale(1.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .hidden{
   opacity: 0;
@@ -210,7 +216,7 @@ nav{
 };
 @keyframes slide-left {
   from {
-    transform: translateX(-50vw);
+    transform: translateX(-100vw);
   }
   to {
     transform: translateX(0);
@@ -218,7 +224,7 @@ nav{
 };
 @keyframes slide-right {
   from {
-    transform: translateX(50vw);
+    transform: translateX(100vw);
   }
   to {
     transform: translateX(0);
