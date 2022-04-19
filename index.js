@@ -15,9 +15,9 @@ $("body").scroll(function() {
         if (($(planets[i]).offset().top * 1.5) <= (window.scrollY + (window.innerHeight*0.55)) && $(planets[i]).hasClass('hidden')){
             $(planets[i]).removeClass('hidden');
             //Left side
-            if(i % 2 == 0) $(planets[i]).css('animation', 'slide-left 2s');
+            if(i % 2 == 0) $(planets[i]).css('animation', 'slide-left 1.5s');
             //Right side
-            else $(planets[i]).css('animation', 'slide-right 2s');
+            else $(planets[i]).css('animation', 'slide-right 1.5s');
         }
     }
 
@@ -60,7 +60,10 @@ const getRepos = async () => {
         const response = await axios.get(`${BASE_URL}`);
         const data = response.data.filter((repo) => repo.fork !== true);
         data.sort((a,b) => (new Date(b.pushed_at) - new Date(a.pushed_at)));
-        for(let i = 0; i < 2 || i < data.length; i++) $(planets[i]).append(`<h1>${data[i].name}</h1>`)
+        for(let i = 0; i < 2 || i < data.length; i++){
+            $(planets[i]).append(`<h1>${data[i].name}</h1>`).append(`<a target="_blank" href="${data[i].homepage}" rel="noopener noreferrer">Demo Link</a>`).append(`<a target="_blank" href="${data[i].html_url}" rel="noopener noreferrer">GitHub Link</a>`);
+        }
+        console.log(data);
     } catch (errors) {
         console.error(errors);
     }
