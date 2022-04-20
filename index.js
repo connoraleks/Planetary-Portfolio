@@ -61,7 +61,7 @@ const getRepos = async () => {
         const data = response.data.filter((repo) => repo.fork !== true);
         data.sort((a,b) => (new Date(b.pushed_at) - new Date(a.pushed_at)));
         for(let i = 0; i < 2 || i < data.length; i++){
-            $(planets[i]).append(`<h1>${data[i].name}</h1>`).append(`<a target="_blank" href="${data[i].homepage}" rel="noopener noreferrer">Demo Link</a>`).append(`<a target="_blank" href="${data[i].html_url}" rel="noopener noreferrer">GitHub Link</a>`);
+            $(planets[i]).append(`<h1>${data[i].name}</h1>`).append(`<h6>${data[i].topics.toString().toUpperCase().replaceAll(',', ' | ')}</h6>`).append(`<div><a target="_blank" href="${data[i].homepage}" rel="noopener noreferrer">Demo Link</a><a target="_blank" href="${data[i].html_url}" rel="noopener noreferrer">GitHub Link</a></div>`).append(`<p>${data[i].description}</p>`);
         }
         console.log(data);
     } catch (errors) {
