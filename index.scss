@@ -177,13 +177,6 @@ nav{
   }
   padding-top: 5vh; //Needed because the navbar links dont account for navbar blocking content
 }
-#contactPage{
-  box-sizing: border-box;
-  padding: 1rem;
-  height: 100vh;
-  background: transparent;
-  padding-top: 5vh; //Needed because the navbar links dont account for navbar blocking content
-}
 .planet{
   box-sizing: border-box;
   margin: 5rem 0;
@@ -211,6 +204,7 @@ nav{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
     width: 100%;
     a{
       svg{
@@ -244,16 +238,11 @@ nav{
   }
 }
 #contactPage{
-  position: relative;
-  overflow: hidden;
+  height: 100vh;
   background-color: transparent;
-  padding-top: 35vh;
-  padding-bottom: 10vh;
-  @media(max-width: 1000px){
-      padding-top: 45vh;
-      flex: 1;
-      justify-content: left;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .form-container{
       display: flex;
       flex-direction: column;
