@@ -14,6 +14,7 @@
         <div id="stars2"></div>
         <div id="stars3"></div>
     </div>
+
     <nav id="nav">
         <ul>
             <li class="hidden" id="homelink"><a href="#landingPage">Home</a></li>
@@ -21,19 +22,42 @@
             <li class="hidden" id="contactlink"><a href="#contactPage">Contact</a></li>
         </ul>
     </nav>
-    <div id="landingPage">
+
+    <section id="landingPage">
         <div id="titlebox">
             <h1 class="title" id="title1"><span class="hidden" id="title1a">A long time ago</span> <span class="hidden" id='title1b'>in a galaxy far, far away....</span></h1>
             <h1 class="title hidden" id="title2">There was a portfolio so incredible...</h1>
             <h1 class="title" id="title3"><span class="hidden" id="title3a">That you couldn't help but... </span> <span class="hidden" id="title3b" style="color: white; font-weight: bold;">scroll.</span></h1>
         </div> 
-    </div>
-    <div id="planetsPage">
+    </section>
+
+    <section id="planetsPage">
         <div id="planet1" class="planet left hidden"></div>
         <div id="planet2" class="planet right hidden"></div>
         <div id="planet3" class="planet left hidden"></div>
-    </div>
-    <div id="contactPage"></div>
+    </section>
+
+    <section id="contactPage">
+        <div class="form-container">
+            <h2>Contact details</h2>
+            <p>Use this form to get in touch.</p>
+            <form>
+                <div class="form-group">
+                    <input placeholder="Name" type="text" class="form-control-input" id="cname" required="">
+                </div>
+                <div class="form-group">
+                    <input placeholder="Email" type="email" class="form-control-input" id="cemail" required="">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Message" class="form-control-textarea" id="cmessage" required=""></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control-submit-button">Submit Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
     <script src="index.js"></script>
 </body>
 </html>

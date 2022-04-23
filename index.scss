@@ -87,14 +87,13 @@ html,body {
 }
 nav{
   z-index: 1000;
-  transition: all .3s ease-in-out;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding-left: 1vw;
   font-size: 1rem;
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     font-size: 0.85rem;
     font-weight: 600;
     padding-left: 0.5vw;
@@ -105,11 +104,12 @@ nav{
     padding: 1rem;
     list-style: none;
     gap: 2rem;
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
       gap: 1rem;
     }
     li{
       a{
+        transition: ease all 0.3s;
         display: inline-block;
         color: silver;
         text-decoration: none;
@@ -142,7 +142,7 @@ nav{
       font-weight: bold;
       color: silver;
       font-size: 2em;
-      @media (max-width: 400px) {
+      @media (max-width: 500px) {
         font-size: 1.5em;
         font-weight: bolder;
       }
@@ -172,7 +172,7 @@ nav{
 #planetsPage{
   box-sizing: border-box;
   padding: 0 5rem;
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     padding: 1rem;
   }
   padding-top: 5vh; //Needed because the navbar links dont account for navbar blocking content
@@ -212,6 +212,20 @@ nav{
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
+    a{
+      svg{
+        height: 5rem;
+        width: 5rem;
+        transition: ease all 0.3s;
+        @media (max-width: 500px) {
+          height: 3rem;
+          width: 3rem;
+        }
+      }
+      svg:hover{
+        transform: scale(1.05);
+      }
+    }
   }
   h6{
     color: gray;
@@ -227,6 +241,101 @@ nav{
     @media (max-width: 500px) {
       display: none;
     }
+  }
+}
+#contactPage{
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  padding-top: 35vh;
+  padding-bottom: 10vh;
+  @media(max-width: 1000px){
+      padding-top: 45vh;
+      flex: 1;
+      justify-content: left;
+  }
+  .form-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 25vw;
+      @media (max-width: 1000px) {
+          margin: 0 10vw;
+      }
+      h2{
+          margin: 0;
+          color: white;
+          font-style: normal;
+          font-size: 2.5rem;
+          font-weight: 600;
+          line-height: 2.375rem;
+          font-family: "Open Sans", sans-serif;
+          text-align: center;
+          @media(max-width: 1000px){
+              font-size: 2rem;
+          }
+      }
+      p{
+          margin-bottom: 2.25rem;
+          font-size: 1.25rem;
+          line-height: 1.75rem;
+          color: silver;
+          font-style: normal;
+          font-weight: 400;
+          font-family: "Open Sans", sans-serif;
+          text-align: center;
+          @media(max-width: 1000px){
+              font-size: 1rem;
+          }
+      }
+      form{
+          padding: 1rem;
+          width: 100%;
+          .form-group {
+              margin-bottom: 1.25rem;
+              width: 100%;
+              .form-control-input{
+                  padding: 0.5rem 1rem;
+                  box-sizing: border-box;
+                  width: 100%;
+                  border: 1px solid #cbcbd1;
+                  border-radius: 4px;
+                  color: silver;
+              }
+
+
+              .form-control-textarea {
+                  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI";
+                  padding: 1rem;
+                  min-height: 15vh;
+                  box-sizing: border-box;
+                  width: 100%;
+                  border: 1px solid #cbcbd1;
+                  border-radius: 4px;
+                  color: silver;
+              }
+
+              .form-control-submit-button {
+                  width: 100%;
+                  padding: 1rem;
+                  border: 1px solid silver;
+                  border-radius: 32px;
+                  background-color: transparent;
+                  color: white;
+                  cursor: pointer;
+                  font-size: 1rem;
+                  font-weight: bold;
+                  transition: all 0.2s;
+              }
+              .form-control-submit-button:hover {
+                  border: 1px solid silver;
+                  background-color: transparent;
+                  color: white;
+                  box-shadow: 0 0 10px #cbcbd1;
+              }
+          }
+      }
   }
 }
 .hidden{
